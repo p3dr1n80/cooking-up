@@ -1,11 +1,17 @@
 <script lang="js">
 import {dataCategories} from "@/http";
+import CardCategoria from "@/components/CardCategoria.vue";
 
 export default {
+  components: {CardCategoria},
+
   data() {
     return {
-      categorias: dataCategories()
+      categorias: []
     }
+  },
+  async created() {
+    this.categorias = await dataCategories()
   }
 }
 </script>
@@ -18,9 +24,9 @@ export default {
       Selecione abaixo os ingredientes que você quer usar nesta receita:
     </p>
 
-    <ul class="categorias">
+    <ul v-if="categorias.length" class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        {{categoria.nome}}
+        <CardCategoria :categoria="categoria"/>
       </li>
     </ul>
 
