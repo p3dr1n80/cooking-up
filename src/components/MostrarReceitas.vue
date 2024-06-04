@@ -2,6 +2,7 @@
 import type IReceita from "@/interfaces/IReceita";
 import type {PropType} from "vue";
 import {dataReceitas} from "@/http";
+import {criarLista} from "@/http";
 import BotaoPrincipal from "@/components/BotaoPrincipal.vue";
 import CardReceita from "@/components/CardReceita.vue";
 
@@ -19,12 +20,8 @@ export default {
   async created() {
     const receitas = await dataReceitas();
 
-    receitas.filter((receita: IReceita) => {
-      this.ingredientes.filter((ingrediente: string) => {
-        if (receita.ingredientes.includes(ingrediente)) {
-          this.receitasEncontradas.push(receita)
-        }
-      })
+    this.receitasEncontradas = receitas.filter((receita: IReceita) => {
+      return criarLista(receita.ingredientes, this.ingredientes);
     })
   },
 
