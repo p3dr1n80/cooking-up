@@ -1,12 +1,23 @@
-<script lang="js">
+<script lang="ts">
 import IngredientsSelect from "@/components/IngredientsSelect.vue";
+import Tag from "@/components/Tag.vue";
 
 export default {
-  components: {IngredientsSelect},
+  components: {IngredientsSelect, Tag},
 
   data() {
     return {
-      ingredientes: ['Alho', 'Manteiga', 'Orégano', 'Óleo']
+      ingredientes: [] as string[]
+    }
+  },
+
+  methods: {
+    addIngredient(ingredient: string){
+      this.ingredientes.push(ingredient)
+    },
+
+    delIngredient(ingredient: string) {
+      this.ingredientes.splice(this.ingredientes.indexOf(ingredient), 1)
     }
   }
 }
@@ -20,8 +31,8 @@ export default {
       </span>
 
       <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-        <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente">
-          {{ingrediente}}
+        <li v-for="ingrediente in ingredientes" :key="ingrediente">
+          <Tag :texto="ingrediente" :ativa="true"/>
         </li>
       </ul>
 
@@ -30,7 +41,10 @@ export default {
         Sua lista está vazia, selecione ingredientes para iniciar.
       </p>
     </section>
-    <IngredientsSelect/>
+    <IngredientsSelect
+        @adicionar-ingrediente="addIngredient"
+        @remover-ingrediente="delIngredient"
+    />
   </main>
 </template>
 
@@ -59,18 +73,6 @@ export default {
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
-}
-
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-  transition: 0.2s;
-  color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
 }
 
 .lista-vazia {

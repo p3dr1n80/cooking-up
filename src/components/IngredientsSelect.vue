@@ -1,18 +1,22 @@
-<script lang="js">
+<script lang="ts">
 import {dataCategories} from "@/http";
 import CardCategoria from "@/components/CardCategoria.vue";
+import type ICategoria from "@/interfaces/ICategoria";
 
 export default {
   components: {CardCategoria},
 
   data() {
     return {
-      categorias: []
+      categorias: [] as ICategoria[]
     }
   },
+
   async created() {
-    this.categorias = await dataCategories()
-  }
+    this.categorias = await dataCategories();
+  },
+
+  emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
@@ -26,7 +30,11 @@ export default {
 
     <ul v-if="categorias.length" class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        <CardCategoria :categoria="categoria"/>
+        <CardCategoria
+            :categoria="categoria"
+            @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+            @remover-ingrediente="$emit('removerIngrediente', $event)"
+        />
       </li>
     </ul>
 
