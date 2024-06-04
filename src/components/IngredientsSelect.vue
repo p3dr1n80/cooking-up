@@ -1,10 +1,11 @@
 <script lang="ts">
 import {dataCategories} from "@/http";
 import CardCategoria from "@/components/CardCategoria.vue";
+import BotaoPrincipal from "@/components/BotaoPrincipal.vue";
 import type ICategoria from "@/interfaces/ICategoria";
 
 export default {
-  components: {CardCategoria},
+  components: {BotaoPrincipal, CardCategoria},
 
   data() {
     return {
@@ -42,6 +43,8 @@ export default {
       *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
   </section>
+
+  <BotaoPrincipal texto="Buscar receitas!"/>
 </template>
 
 <style scoped>
