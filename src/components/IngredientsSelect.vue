@@ -5,6 +5,8 @@ import BotaoPrincipal from "@/components/BotaoPrincipal.vue";
 import type ICategoria from "@/interfaces/ICategoria";
 
 export default {
+  name: 'IngredientsSelect',
+
   components: {BotaoPrincipal, CardCategoria},
 
   data() {
@@ -17,7 +19,7 @@ export default {
     this.categorias = await dataCategories();
   },
 
-  emits: ['adicionarIngrediente', 'removerIngrediente']
+  emits: ['adicionarIngrediente', 'removerIngrediente', 'buscarReceitas']
 }
 </script>
 
@@ -44,7 +46,11 @@ export default {
     </p>
   </section>
 
-  <BotaoPrincipal texto="Buscar receitas!"/>
+  <BotaoPrincipal
+      texto="Buscar receitas!"
+      @click="$emit('buscarReceitas')"
+
+  />
 </template>
 
 <style scoped>
