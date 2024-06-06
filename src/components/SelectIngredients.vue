@@ -1,17 +1,17 @@
 <script lang="ts">
 import {dataCategories} from "@/http";
-import CardCategoria from "@/components/CardCategoria.vue";
-import BotaoPrincipal from "@/components/BotaoPrincipal.vue";
-import type ICategoria from "@/interfaces/ICategoria";
+import CardCategory from "@/components/CardCategory.vue";
+import MainBottom from "@/components/MainBottom.vue";
+import type ICategory from "@/interfaces/ICategory";
 
 export default {
-  name: 'IngredientsSelect',
+  name: 'SelectIngredients',
 
-  components: {BotaoPrincipal, CardCategoria},
+  components: {MainBottom, CardCategory},
 
   data() {
     return {
-      categorias: [] as ICategoria[]
+      categorias: [] as ICategory[]
     }
   },
 
@@ -33,7 +33,7 @@ export default {
 
     <ul v-if="categorias.length" class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        <CardCategoria
+        <CardCategory
             :categoria="categoria"
             @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
             @remover-ingrediente="$emit('removerIngrediente', $event)"
@@ -46,7 +46,7 @@ export default {
     </p>
   </section>
 
-  <BotaoPrincipal
+  <MainBottom
       texto="Buscar receitas!"
       @click="$emit('buscarReceitas')"
 

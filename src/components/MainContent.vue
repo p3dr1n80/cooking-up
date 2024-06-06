@@ -1,12 +1,12 @@
 <script lang="ts">
-import IngredientsSelect from "@/components/IngredientsSelect.vue";
+import SelectIngredients from "@/components/SelectIngredients.vue";
 import MostrarReceitas from "@/components/MostrarReceitas.vue";
 import Tag from "@/components/Tag.vue";
 
 type Page = 'SelecionarIngredientes' | 'MostrarReceitas';
 
 export default {
-  components: {MostrarReceitas, IngredientsSelect, Tag},
+  components: {MostrarReceitas, SelectIngredients, Tag},
 
   data() {
     return {
@@ -50,8 +50,8 @@ export default {
       </p>
     </section>
 
-    <KeepAlive include="IngredientsSelect">
-      <IngredientsSelect v-if="conteudo === 'SelecionarIngredientes'"
+    <KeepAlive include="SelectIngredients">
+      <SelectIngredients v-if="conteudo === 'SelecionarIngredientes'"
           @adicionar-ingrediente="addIngredient"
           @remover-ingrediente="delIngredient"
           @buscar-receitas="navigate('MostrarReceitas')"

@@ -1,17 +1,17 @@
 <script lang="js">
 import Banner from '@/components/Banner.vue'
 import MainContent from "@/components/MainContent.vue";
-import Rodape from "@/components/Rodape.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
-  components: {MainContent, Banner, Rodape}
+  components: {MainContent, Banner, Footer}
 }
 </script>
 
 <template>
   <Banner/>
   <MainContent/>
-  <Rodape/>
+  <Footer/>
 </template>
 
 <style scoped>

@@ -1,10 +1,10 @@
 <script lang="ts">
-import type IReceita from "@/interfaces/IReceita";
+import type IRecipe from "@/interfaces/IRecipe";
 import type {PropType} from "vue";
-import {dataReceitas} from "@/http";
-import {criarLista} from "@/http";
-import BotaoPrincipal from "@/components/BotaoPrincipal.vue";
-import CardReceita from "@/components/CardReceita.vue";
+import {dataRecipes} from "@/http";
+import {createList} from "@/http";
+import MainBottom from "@/components/MainBottom.vue";
+import CardRecipe from "@/components/CardRecipe.vue";
 
 export default {
   props: {
@@ -13,19 +13,19 @@ export default {
 
   data() {
     return {
-      receitasEncontradas: [] as IReceita[]
+      receitasEncontradas: [] as IRecipe[]
     };
   },
 
   async created() {
-    const receitas = await dataReceitas();
+    const receitas = await dataRecipes();
 
-    this.receitasEncontradas = receitas.filter((receita: IReceita) => {
-      return criarLista(receita.ingredientes, this.ingredientes);
+    this.receitasEncontradas = receitas.filter((receita: IRecipe) => {
+      return createList(receita.ingredientes, this.ingredientes);
     })
   },
 
-  components: { BotaoPrincipal, CardReceita },
+  components: { MainBottom, CardRecipe },
 
   emits: ['editarReceitas']
 }
@@ -46,7 +46,7 @@ export default {
 
       <ul class="receitas">
         <li v-for="receita in receitasEncontradas" :key="receita.nome">
-          <CardReceita :receita="receita" />
+          <CardRecipe :receita="receita" />
         </li>
       </ul>
     </div>
@@ -60,7 +60,7 @@ export default {
            alt="Desenho de um ovo quebrado. A gema tem um rosto com uma expressão triste.">
     </div>
 
-    <BotaoPrincipal texto="Editar lista" @click="$emit('editarReceitas')" />
+    <MainBottom texto="Editar lista" @click="$emit('editarReceitas')" />
   </section>
 </template>
 
