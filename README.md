@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="460" height="350" src="src/assets/images/foto-banner.png">
+</p>
+
 # Cooking
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/pedro-p-silva/cooking-up/blob/main/LICENSE)
 
