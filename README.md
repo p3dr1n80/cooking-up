@@ -1,4 +1,5 @@
 # Cooking
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/pedro-p-silva/cooking-up/blob/main/LICENSE)
 
 Esse projeto foi desenvolvido durante meus estudos no framework Vue.js, nele é possível, efetuar a seleção de vários ingredientes para que uma receita seja apresentada.
 
