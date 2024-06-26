@@ -4,7 +4,7 @@ export default {}
 
 <template>
   <footer class="rodape paragrafo">
-    2023 - Projeto fictício sem fins comerciais.
+    © 2024 - Pedro Silva. Projeto fictício sem fins comerciais.
   </footer>
 </template>
 

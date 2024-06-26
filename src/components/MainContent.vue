@@ -1,12 +1,13 @@
 <script lang="ts">
 import SelectIngredients from "@/components/SelectIngredients.vue";
-import MostrarReceitas from "@/components/MostrarReceitas.vue";
+import ShowRecipes from "@/components/ShowRecipes.vue";
 import Tag from "@/components/Tag.vue";
+import Alert from "@/components/Alert.vue";
 
 type Page = 'SelecionarIngredientes' | 'MostrarReceitas';
 
 export default {
-  components: {MostrarReceitas, SelectIngredients, Tag},
+  components: {ShowRecipes, SelectIngredients, Tag, Alert},
 
   data() {
     return {
@@ -33,6 +34,7 @@ export default {
 
 <template>
   <main class="conteudo-principal">
+    <Alert/>
     <section>
       <span class="subtitulo-lg sua-lista-texto">
         Sua lista:
@@ -57,7 +59,7 @@ export default {
           @buscar-receitas="navigate('MostrarReceitas')"
       />
 
-      <MostrarReceitas
+      <ShowRecipes
           v-else-if="conteudo === 'MostrarReceitas'"
           @editar-receitas="navigate('SelecionarIngredientes')"
           :ingredientes="ingredientes"
@@ -76,7 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
+  gap: 2.5rem;
 }
 
 .sua-lista-texto {

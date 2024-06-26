@@ -2,7 +2,8 @@ import type ICategory from "@/interfaces/ICategory";
 import type IRecipe from "@/interfaces/IRecipe";
 
 export async function dataCategories(): Promise<ICategory[]> {
-    const promise = await fetch('https://gist.githubusercontent.com/antonio-evaldo/002ad55e1cf01ef3fc6ee4feb9152964/raw/07e853b7d0626db51ce2e84bb2f15ca450b7bd7f/categorias.json')
+    const promise = await fetch('https://gist.githubusercontent.com/pedro-p-silva/' +
+        '2b2d8ff615077dd43c67ee2b558a883a/raw/6b9272f50e43e3c3e03d7f95f4f31d3e0d4bd4ff/categories.json')
 
     return await promise.json()
 }
@@ -14,7 +15,8 @@ async function getDataURL<T>(url: string) {
 }
 
 export async function dataRecipes() {
-    return getDataURL<IRecipe[]>('https://gist.githubusercontent.com/antonio-evaldo/002ad55e1cf01ef3fc6ee4feb9152964/raw/bf463b47860043da3b3604ca60cffc3ad1ba9865/receitas.json');
+    return getDataURL<IRecipe[]>('https://gist.githubusercontent.com/pedro-p-silva/' +
+        'ac308d6eb870edb5197bccd3bcda43b3/raw/b35429a39174f8e7b965111e5026e1bb95223e2d/recipes.json');
 }
 
 export function createList(list1: unknown[], list2: unknown[]) {
