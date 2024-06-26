@@ -81,6 +81,10 @@ export default {
   gap: 2.5rem;
 }
 
+.conteudo-principal section {
+  margin-top: 50px;
+}
+
 .sua-lista-texto {
   color: var(--coral, #F0633C);
   display: block;
